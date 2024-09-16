@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    url: jdbc:mysql://host.docker.internal:1000/ipl
+    username: qa_user
+    password: qa_password
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+
+server:
+  port: 5052  # QA port

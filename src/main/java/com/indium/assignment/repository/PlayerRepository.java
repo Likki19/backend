@@ -9,6 +9,7 @@ import org.springframework.data.repository.query.Param;
 import java.util.*;
 
 public interface PlayerRepository extends JpaRepository<Player, Integer> {
+    List<Player> findAllByPlayerName(String playerName);
     Optional<Player> findByPlayerName(String playerName);
 
     // Custom query methods (if any) can be added here

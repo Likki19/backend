@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/ipl
+    url: jdbc:mysql://host.docker.internal:1000/ipl-match
     username: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -10,4 +10,26 @@ spring:
     show-sql: true
   application:
     name: assignment
+  cache:
+    type: redis
+    redis:
+      time-to-live: 600000  # 10 minutes in milliseconds
+      cache-null-values: false
+      use-key-prefix: true
+  redis:
+    host: localhost
+    port: 6379  # Default Redis port
+    # password: your_redis_password  # Uncomment and set if your Redis requires authentication
+  kafka:
+    bootstrap-servers: localhost:9092  # Adjust if your Kafka broker is elsewhere
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+  logging:
+    level:
+      org.springframework.cache: DEBUG
+      org.springframework.data.redis: DEBUG
+      org.springframework.kafka: DEBUG
 
+server:
+  port: 5050
